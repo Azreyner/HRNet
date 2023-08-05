@@ -1,0 +1,75 @@
+.formulaire {
+  display: flex;
+  flex-flow: column;
+  max-width: 300px;
+  margin-bottom: 10px;
+  margin-top: -10px;
+  padding: 20px;
+  border-radius: 15px;
+  -webkit-box-shadow: -3px 4px 15px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: -3px 4px 15px rgba(0, 0, 0, 0.25);
+  box-shadow: -3px 4px 15px rgba(0, 0, 0, 0.25);
+
+  &__form {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  label {
+    text-align: left;
+  }
+
+  input,
+  select {
+    height: 38px;
+    margin-bottom: 10px;
+    border-color: black;
+    border-radius: 10px;
+    border-width: 1px;
+  }
+
+  select {
+    height: 42px;
+  }
+
+  &__fieldset {
+    border: none;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0;
+    margin-top: 5px;
+
+    &--legend {
+      display: flex;
+      justify-content: space-between;
+
+      legend {
+        margin-left: -2px;
+      }
+
+      div {
+        height: 1px;
+        width: 68%;
+        border: none;
+        background-color: #646cff;
+        align-self: center;
+      }
+    }
+
+    legend {
+      text-align: left;
+    }
+  }
+
+  button {
+    background-color: #646cff;
+    color: white;
+
+    margin-top: 10px;
+  }
+
+  a {
+    margin-top: 5px;
+    text-align: left;
+  }
+}
