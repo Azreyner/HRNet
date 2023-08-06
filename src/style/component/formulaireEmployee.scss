@@ -13,19 +13,19 @@
   &__form {
     display: flex;
     flex-flow: column nowrap;
+
+    &--input,
+    &--select {
+      height: 38px;
+      margin-bottom: 10px;
+      border-color: black;
+      border-radius: 10px;
+      border-width: 1px;
+    }
   }
 
   label {
     text-align: left;
-  }
-
-  input,
-  select {
-    height: 38px;
-    margin-bottom: 10px;
-    border-color: black;
-    border-radius: 10px;
-    border-width: 1px;
   }
 
   select {
@@ -61,7 +61,7 @@
     }
   }
 
-  button {
+  #boutonSave {
     background-color: #646cff;
     color: white;
 

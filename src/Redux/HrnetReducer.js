@@ -1,48 +1,53 @@
-import { createStore } from "redux";
+import { compose, createStore } from "redux";
 
-const initialState = [
-  {
-    firstName: "Marie",
-    lastName: "Jeanne",
-    street: "rue test alabama",
-    city: "Tokyo",
-    zipCode: "72200",
-    birthDate: "1980-03-06T06:00:59Z",
-    startDate: "1986-10-30T20:58:20Z",
-    department: "Sales",
-    state: "Georgia",
-  },
-  {
-    firstName: "Jean",
-    lastName: "Dupont",
-    street: "rue test arfford",
-    city: "Paris",
-    zipCode: "85000",
-    birthDate: "1980-03-06T06:00:59Z",
-    startDate: "1986-10-30T20:58:20Z",
-    department: "Research and Development",
-    state: "Texas",
-  },
-  {
-    firstName: "George",
-    lastName: "Dufour",
-    street: "rue test rogue",
-    city: "Fort de france",
-    zipCode: "47000",
-    birthDate: "1980-03-06T06:00:59Z",
-    startDate: "1986-10-30T20:58:20Z",
-    department: "Marketing",
-    state: "Florida",
-  },
-];
+const ReactReduxDevTools =
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+
+const initialState = {
+  employees: [
+    {
+      firstName: "Marie",
+      lastName: "Jeanne",
+      street: "rue test alabama",
+      city: "Tokyo",
+      zipCode: "72200",
+      birthDate: "1980-03-06T06:00:59Z",
+      startDate: "1986-10-30T20:58:20Z",
+      department: "Sales",
+      state: "Georgia",
+    },
+    {
+      firstName: "Jean",
+      lastName: "Dupont",
+      street: "rue test arfford",
+      city: "Paris",
+      zipCode: "85000",
+      birthDate: "1980-03-06T06:00:59Z",
+      startDate: "1986-10-30T20:58:20Z",
+      department: "Research and Development",
+      state: "Texas",
+    },
+    {
+      firstName: "George",
+      lastName: "Dufour",
+      street: "rue test rogue",
+      city: "Fort de france",
+      zipCode: "47000",
+      birthDate: "1980-03-06T06:00:59Z",
+      startDate: "1986-10-30T20:58:20Z",
+      department: "Marketing",
+      state: "Florida",
+    },
+  ],
+};
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case "AJOUTER_EMPLOYE":
-      return state;
+    case "AJOUTER_EMPLOYEE":
+      return { ...state, employees: [...state.employees, action.employee] };
     default:
       return state;
   }
 }
 
-export const store = createStore(reducer);
+export const store = createStore(reducer, compose(ReactReduxDevTools));
