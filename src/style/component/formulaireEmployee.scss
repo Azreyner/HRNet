@@ -21,6 +21,7 @@
       border-color: black;
       border-radius: 10px;
       border-width: 1px;
+      width: 100%;
     }
   }
 
@@ -72,4 +73,14 @@
     margin-top: 5px;
     text-align: left;
   }
+}
+
+.react-datepicker__day--selected {
+  background-color: #646cff !important;
+}
+
+.Dropdown-control {
+  border-radius: 10px !important;
+  border-color: black !important;
+  text-align: start;
 }

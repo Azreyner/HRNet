@@ -6,6 +6,8 @@ import DatePicker from "react-datepicker";
 import { ajoutEmployee } from "../Redux/HrnetActions.js";
 import "../style/component/formulaireEmployee.scss";
 import "react-datepicker/dist/react-datepicker.css";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 import moment from "moment/moment.js";
 
 const FormulaireEmployee = () => {
@@ -68,7 +70,7 @@ const FormulaireEmployee = () => {
 
   const changementBirthDate = (date) => {
     setBirthDate(date);
-    date = moment().format();
+    date = date.toLocaleDateString();
     setEmployee((employee) => ({
       ...employee,
       birthDate: date,
@@ -77,7 +79,7 @@ const FormulaireEmployee = () => {
 
   const changementStartDate = (date) => {
     setStartDate(date);
-    date = moment().format();
+    date = date.toLocaleDateString();
     setEmployee((employee) => ({
       ...employee,
       startDate: date,
@@ -101,6 +103,16 @@ const FormulaireEmployee = () => {
   const saveEmployee = () => {
     dispatch(ajoutEmployee(employee));
   };
+
+  const optionsDepartement = [
+    "Sales",
+    "Marketing",
+    "Engineering",
+    "Human Resources",
+    "Legal",
+  ];
+
+  const defaultOption = optionsDepartement[0];
 
   return (
     <div className="formulaire" id="formulaire">
@@ -188,18 +200,12 @@ const FormulaireEmployee = () => {
         </fieldset>
 
         <label htmlFor="department">Department</label>
-        <select
-          className="formulaire__form--select"
-          name="department"
-          id="department"
-          onChange={(e) => changementDepartement(e.target.value)}
-        >
-          <option>Sales</option>
-          <option>Marketing</option>
-          <option>Engineering</option>
-          <option>Human Resources</option>
-          <option>Legal</option>
-        </select>
+
+        <Dropdown
+          options={optionsDepartement}
+          onChange={(e) => changementDepartement(e.value)}
+          value={defaultOption}
+        />
       </form>
 
       <button id="boutonSave" onClick={saveEmployee}>
