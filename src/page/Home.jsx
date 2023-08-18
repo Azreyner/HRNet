@@ -1,16 +1,15 @@
 import React from "react";
 import FormulaireEmployee from "../component/FormulaireEmployee";
 import "../style/page/home.scss";
+import Header from "../component/Header";
+
+import { createPortal } from "react-dom";
 
 const Index = () => {
   return (
     <div>
       <div className="containerFormulaire">
-        <div className="title">
-          <h1>
-            HR<span style={{ color: "#646CFF", fontSize: "64px" }}>.</span>Net
-          </h1>
-        </div>
+        {createPortal(<Header />, document.body)}
         <div className="container">
           <FormulaireEmployee />
         </div>

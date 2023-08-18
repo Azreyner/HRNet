@@ -1,7 +1,9 @@
-import React from "react";
+import React from 'react'
 
 function PaginationTable() {
-  return <div>PaginationTable</div>;
+  return (
+    <div>PaginationTable</div>
+  )
 }
 
-export default PaginationTable;
+export default PaginationTable

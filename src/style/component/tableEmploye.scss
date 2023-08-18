@@ -1,13 +1,48 @@
+#leTableau {
+  margin-top: 80px;
+}
+
+#leTableau .topTableau {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.topTableau h1 {
+  margin-top: 0;
+}
+
+.topTableau span {
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.topTableau input {
+  border-color: #646cff;
+  border-radius: 8px;
+  min-height: 40px;
+}
+
 table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  min-height: 700px;
+  min-width: 1280px;
+}
+
+thead {
+  min-width: 75px;
 }
 
 table td,
 table th {
   border: 1px solid #ddd;
   padding: 8px;
+  text-align: center !important;
 }
 
 table tr:nth-child(even) {

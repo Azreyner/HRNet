@@ -8,7 +8,8 @@ import "../style/component/formulaireEmployee.scss";
 import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-import moment from "moment/moment.js";
+import { ReactModal } from "@Azreyner/reactmodal";
+import { createPortal } from "react-dom";
 
 const FormulaireEmployee = () => {
   /*const [employee, setEmployee] = useState([
@@ -32,6 +33,7 @@ const FormulaireEmployee = () => {
     state: "",
   });
   const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const changementFirstname = (leFirstname) => {
     setEmployee((employee) => ({
@@ -102,6 +104,7 @@ const FormulaireEmployee = () => {
 
   const saveEmployee = () => {
     dispatch(ajoutEmployee(employee));
+    setIsModalOpen(true);
   };
 
   const optionsDepartement = [
@@ -114,106 +117,120 @@ const FormulaireEmployee = () => {
 
   const defaultOption = optionsDepartement[0];
 
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className="formulaire" id="formulaire">
-      {/*<h2 className="formulaire__titre">Create Employee</h2>*/}
-      <form action="#" className="formulaire__form" id="create-employee">
-        <label htmlFor="first-name">First Name</label>
-        <input
-          className="formulaire__form--input"
-          type="text"
-          id="first-name"
-          onChange={(e) => changementFirstname(e.target.value)}
-        />
-
-        <label htmlFor="last-name">Last Name</label>
-        <input
-          className="formulaire__form--input"
-          type="text"
-          id="last-name"
-          onChange={(e) => changementLastname(e.target.value)}
-        />
-
-        <label htmlFor="date-of-birth">Date of Birth</label>
-        <DatePicker
-          selected={birthDate}
-          onChange={changementBirthDate}
-          dateFormat="yyyy-MM-dd"
-          className="formulaire__form--input"
-          showYearDropdown
-        />
-
-        <label htmlFor="start-date">Start Date</label>
-        <DatePicker
-          selected={startDate}
-          onChange={changementStartDate}
-          dateFormat="yyyy-MM-dd"
-          className="formulaire__form--input"
-          showYearDropdown
-        />
-
-        <fieldset className="formulaire__fieldset">
-          <div className="formulaire__fieldset--legend">
-            <legend>Address</legend>
-            <div></div>
-          </div>
-
-          <label htmlFor="street">Street</label>
+    <>
+      <div className="formulaire" id="formulaire">
+        {/*<h2 className="formulaire__titre">Create Employee</h2>*/}
+        <form action="#" className="formulaire__form" id="create-employee">
+          <label htmlFor="first-name">First Name</label>
           <input
             className="formulaire__form--input"
-            id="street"
             type="text"
-            onChange={(e) => changementStreet(e.target.value)}
+            id="first-name"
+            onChange={(e) => changementFirstname(e.target.value)}
           />
 
-          <label htmlFor="city">City</label>
+          <label htmlFor="last-name">Last Name</label>
           <input
             className="formulaire__form--input"
-            id="city"
             type="text"
-            onChange={(e) => changementCity(e.target.value)}
+            id="last-name"
+            onChange={(e) => changementLastname(e.target.value)}
           />
 
-          <label htmlFor="state">State</label>
-          <select
-            className="formulaire__form--select"
-            name="state"
-            id="state"
-            onChange={(e) => changementstate(e.target.value)}
-          >
-            {states.map((item, index) => {
-              return (
-                <option key={index} value={item.abbreviation}>
-                  {item.name}
-                </option>
-              );
-            })}
-          </select>
-
-          <label htmlFor="zip-code">Zip Code</label>
-          <input
+          <label htmlFor="date-of-birth">Date of Birth</label>
+          <DatePicker
+            selected={birthDate}
+            onChange={changementBirthDate}
+            dateFormat="yyyy-MM-dd"
             className="formulaire__form--input"
-            id="zip-code"
-            type="number"
-            onChange={(e) => changementZipcode(e.target.value)}
+            showYearDropdown
           />
-        </fieldset>
 
-        <label htmlFor="department">Department</label>
+          <label htmlFor="start-date">Start Date</label>
+          <DatePicker
+            selected={startDate}
+            onChange={changementStartDate}
+            dateFormat="yyyy-MM-dd"
+            className="formulaire__form--input"
+            showYearDropdown
+          />
 
-        <Dropdown
-          options={optionsDepartement}
-          onChange={(e) => changementDepartement(e.value)}
-          value={defaultOption}
-        />
-      </form>
+          <fieldset className="formulaire__fieldset">
+            <div className="formulaire__fieldset--legend">
+              <legend>Address</legend>
+              <div></div>
+            </div>
 
-      <button id="boutonSave" onClick={saveEmployee}>
-        Save
-      </button>
+            <label htmlFor="street">Street</label>
+            <input
+              className="formulaire__form--input"
+              id="street"
+              type="text"
+              onChange={(e) => changementStreet(e.target.value)}
+            />
 
-      <Link to="/employee-list">View Current Employees</Link>
-    </div>
+            <label htmlFor="city">City</label>
+            <input
+              className="formulaire__form--input"
+              id="city"
+              type="text"
+              onChange={(e) => changementCity(e.target.value)}
+            />
+
+            <label htmlFor="state">State</label>
+            <select
+              className="formulaire__form--select"
+              name="state"
+              id="state"
+              onChange={(e) => changementstate(e.target.value)}
+            >
+              {states.map((item, index) => {
+                return (
+                  <option key={index} value={item.abbreviation}>
+                    {item.name}
+                  </option>
+                );
+              })}
+            </select>
+
+            <label htmlFor="zip-code">Zip Code</label>
+            <input
+              className="formulaire__form--input"
+              id="zip-code"
+              type="number"
+              onChange={(e) => changementZipcode(e.target.value)}
+            />
+          </fieldset>
+
+          <label htmlFor="department">Department</label>
+
+          <Dropdown
+            options={optionsDepartement}
+            onChange={(e) => changementDepartement(e.value)}
+            value={defaultOption}
+          />
+        </form>
+
+        <button id="boutonSave" onClick={saveEmployee}>
+          Save
+        </button>
+      </div>
+      {isModalOpen &&
+        createPortal(
+          <ReactModal
+            contentModal="L'employé a été créé !"
+            contentButton="Fermer"
+            isOpen={isModalOpen}
+            onClose={handleModalClose}
+          />,
+          document.body
+        )}
+    </>
   );
 };
 

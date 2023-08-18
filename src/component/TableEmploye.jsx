@@ -86,8 +86,11 @@ function TableEmploye() {
   const { globalFilter } = state;
 
   return (
-    <div>
-      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+    <div id="leTableau">
+      <div className="topTableau">
+        <h1>Current Employees</h1>
+        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      </div>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup, index) => (
