@@ -3,6 +3,7 @@ import { compose, createStore } from "redux";
 const ReactReduxDevTools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
+// Tous les objets qui serviront à initialiser le state
 const initialState = {
   employees: [
     {
@@ -1108,6 +1109,12 @@ const initialState = {
   ],
 };
 
+/**
+ *
+ * @param {*} state Qui serez initialisé avec "initialState"
+ * @param {*} action
+ * @returns
+ */
 function reducer(state = initialState, action) {
   switch (action.type) {
     case "AJOUTER_EMPLOYEE":

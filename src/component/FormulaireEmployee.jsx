@@ -12,15 +12,9 @@ import { ReactModal } from "@Azreyner/reactmodal";
 import { createPortal } from "react-dom";
 
 const FormulaireEmployee = () => {
-  /*const [employee, setEmployee] = useState([
-    {
-      id: 1,
-      name: "Joe",
-      type: "admin",
-    },
-  ]);*/
   const [startDate, setStartDate] = useState(new Date());
   const [birthDate, setBirthDate] = useState(new Date());
+
   const [employee, setEmployee] = useState({
     firstName: "",
     lastName: "",
@@ -72,6 +66,7 @@ const FormulaireEmployee = () => {
 
   const changementBirthDate = (date) => {
     setBirthDate(date);
+    // fait passé la birthdate au format français jj/mm/aaaa
     date = date.toLocaleDateString();
     setEmployee((employee) => ({
       ...employee,
@@ -81,6 +76,7 @@ const FormulaireEmployee = () => {
 
   const changementStartDate = (date) => {
     setStartDate(date);
+    // fait passé la startDate au format français jj/mm/aaaa
     date = date.toLocaleDateString();
     setEmployee((employee) => ({
       ...employee,
@@ -102,6 +98,10 @@ const FormulaireEmployee = () => {
     }));
   };
 
+  /**
+   * Ici, après avoir appuyé sur le bouton save, dispatch va transmettre l'action souhaité au Reducer.
+   * Aussi, on va déclencher l'affichage de la modale.
+   */
   const saveEmployee = () => {
     dispatch(ajoutEmployee(employee));
     setIsModalOpen(true);
@@ -114,7 +114,6 @@ const FormulaireEmployee = () => {
     "Human Resources",
     "Legal",
   ];
-
   const defaultOption = optionsDepartement[0];
 
   const handleModalClose = () => {
@@ -225,7 +224,6 @@ const FormulaireEmployee = () => {
           <ReactModal
             contentModal="L'employé a été créé !"
             contentButton="Fermer"
-            isOpen={isModalOpen}
             onClose={handleModalClose}
           />,
           document.body
