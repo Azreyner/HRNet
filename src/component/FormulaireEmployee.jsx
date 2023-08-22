@@ -29,6 +29,10 @@ const FormulaireEmployee = () => {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  /**
+   * Change la valeur du prénom de l'employé.
+   * @param {string} leFirstname - Le nouveau prénom de l'employé.
+   */
   const changementFirstname = (leFirstname) => {
     setEmployee((employee) => ({
       ...employee,
@@ -36,6 +40,10 @@ const FormulaireEmployee = () => {
     }));
   };
 
+  /**
+   * Change la valeur du nom de famille de l'employé.
+   * @param {string} leLastname - Le nouveau nom de famille de l'employé.
+   */
   const changementLastname = (leLastname) => {
     setEmployee((employee) => ({
       ...employee,
@@ -43,6 +51,10 @@ const FormulaireEmployee = () => {
     }));
   };
 
+  /**
+   * Change la valeur de la rue de l'adresse de l'employé.
+   * @param {string} laStreet - La nouvelle rue de l'adresse de l'employé.
+   */
   const changementStreet = (laStreet) => {
     setEmployee((employee) => ({
       ...employee,
@@ -50,6 +62,10 @@ const FormulaireEmployee = () => {
     }));
   };
 
+  /**
+   * Change la valeur de la ville de l'adresse de l'employé.
+   * @param {string} laCity - La nouvelle ville de l'adresse de l'employé.
+   */
   const changementCity = (laCity) => {
     setEmployee((employee) => ({
       ...employee,
@@ -57,6 +73,10 @@ const FormulaireEmployee = () => {
     }));
   };
 
+  /**
+   * Change la valeur du code postal de l'adresse de l'employé.
+   * @param {string} leZipcode - Le nouveau code postal de l'adresse de l'employé.
+   */
   const changementZipcode = (leZipcode) => {
     setEmployee((employee) => ({
       ...employee,
@@ -64,6 +84,10 @@ const FormulaireEmployee = () => {
     }));
   };
 
+  /**
+   * Change la date de naissance de l'employé.
+   * @param {Date} date
+   */
   const changementBirthDate = (date) => {
     setBirthDate(date);
     // fait passé la birthdate au format français jj/mm/aaaa
@@ -74,6 +98,10 @@ const FormulaireEmployee = () => {
     }));
   };
 
+  /**
+   * Change la date de début d'emploi de l'employé.
+   * @param {Date} date
+   */
   const changementStartDate = (date) => {
     setStartDate(date);
     // fait passé la startDate au format français jj/mm/aaaa
@@ -84,6 +112,10 @@ const FormulaireEmployee = () => {
     }));
   };
 
+  /**
+   * Change le département de l'employé.
+   * @param {string} leDep - Le nouveau département de l'employé.
+   */
   const changementDepartement = (leDep) => {
     setEmployee((employee) => ({
       ...employee,
@@ -91,6 +123,10 @@ const FormulaireEmployee = () => {
     }));
   };
 
+  /**
+   * Change l'état/région de l'employé.
+   * @param {string} leState - Le nouvel état/région de l'employé.
+   */
   const changementstate = (leState) => {
     setEmployee((employee) => ({
       ...employee,

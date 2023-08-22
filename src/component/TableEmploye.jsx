@@ -81,9 +81,10 @@ function TableEmploye() {
     prepareRow,
     state,
     setGlobalFilter,
+    setPageSize,
   } = tableInstance;
 
-  const { globalFilter } = state;
+  const { globalFilter, pageSize } = state;
 
   return (
     <div id="leTableau">
@@ -131,6 +132,16 @@ function TableEmploye() {
         </tbody>
       </table>
       <div className="boutonsPage">
+        <select
+          value={pageSize}
+          onChange={(e) => setPageSize(Number(e.target.value))}
+        >
+          {[10, 25, 50].map((pageSize) => (
+            <option key={pageSize} value={pageSize}>
+              show {pageSize}
+            </option>
+          ))}
+        </select>
         <button onClick={() => previousPage()} disabled={!canPreviousPage}>
           Précédent
         </button>
